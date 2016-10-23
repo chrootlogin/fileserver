@@ -4,6 +4,7 @@ services:
   smbd:
     restart: always
     image: rootlogin/samba
+    tty: true
     volumes:
       - ./data/config:/etc/samba
       - ./data/samba_lib:/var/lib/samba
