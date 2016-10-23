@@ -4,6 +4,9 @@ function update_ent {
   tail -n1 /etc/passwd >> /var/lib/extrausers/passwd
   tail -n1 /etc/shadow >> /var/lib/extrausers/shadow
   tail -n1 /etc/group >> /var/lib/extrausers/group
+  grep -v $1 /etc/passwd > /etc/passwd
+  grep -v $1 /etc/shadow > /etc/shadow
+  grep -v $1 /etc/group > /etc/group
 }
 
 case $2 in
@@ -12,7 +15,7 @@ case $2 in
     useradd -M "$3"
     echo "$3:$4" | chpasswd
     echo -e "$4\n$4" | (smbpasswd -a -s "$3")
-    update_ent
+    update_ent $3
   ;;
   delete)
     echo "Removing user '$3'..."
@@ -32,7 +35,7 @@ case $2 in
     echo "Changing password of user '$3'..."
     echo "$3:$4" | chpasswd
     echo -e "$4\n$4" | (smbpasswd -a -s "$3")
-    update_ent
+    update_ent $3
   ;;
   *)
     echo "Usage:"
