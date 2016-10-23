@@ -22,6 +22,7 @@ if [ ! -f /var/lib/samba/.initialized ]; then
   wget "http://ftp.debian.org/debian/${SAMBA_URI}" -O /tmp/samba.deb
   dpkg -x /tmp/samba.deb /tmp/samba
   cp -r /tmp/samba/var/lib/samba/* /var/lib/samba
+  mkdir /var/lib/samba/private
   rm -rf /tmp/*
   touch /var/lib/samba/.initialized
 fi

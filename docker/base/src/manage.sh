@@ -1,7 +1,5 @@
 #!/bin/bash
 
-echo $@
-
 function update_ent {
   tail -n1 /etc/passwd >> /var/lib/extrausers/passwd
   tail -n1 /etc/shadow >> /var/lib/extrausers/shadow
@@ -36,4 +34,15 @@ case $2 in
     echo -e "$4\n$4" | (smbpasswd -a -s "$3")
     update_ent
   ;;
+  *)
+    echo "Usage:"
+    echo
+    echo "manage add [USERNAME] [PASSWORD]"
+    echo "  Adds a new user."
+    echo
+    echo "manage delete [USERNAME]"
+    echo "  Remove a user."
+    echo
+    echo "manage password [USERNAME] [PASSWORD]"
+    echo " Reset a user password."
 esac
