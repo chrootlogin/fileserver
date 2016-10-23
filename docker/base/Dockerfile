@@ -23,7 +23,7 @@ RUN apt-get update \
 
 RUN sed -i '/^\(passwd\|group\|shadow\):/{ s/$/ extrausers/; }' /etc/nsswitch.conf
 
-COPY ../../src /opt/docker-samba
+COPY src /opt/docker-samba
 RUN rm -f /opt/docker-samba/Dockerfile \
   && chmod +x /opt/docker-samba/run.sh /opt/docker-samba/manage.sh
 
