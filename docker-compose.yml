@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+  smbd:
+    restart: always
+    image: rootlogin/samba
+    volumes:
+      - /data/docker/nextcloud/mariadb:/var/lib/mysql
+    ports:
+      - "135:135"
+      - "139:139"
+      - "445:455"
+
+  nextcloud:
+    restart: always
+    image: rootlogin/samba-nmbd
+    volumes_from:
+      - smbd
+    ports:
+      - "137:137/udp"
+      - "138:138/udp"
