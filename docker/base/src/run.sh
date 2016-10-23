@@ -23,6 +23,7 @@ if [ ! -f /var/lib/samba/.initialized ]; then
   dpkg -x /tmp/samba.deb /tmp/samba
   cp -r /tmp/samba/var/lib/samba/* /var/lib/samba
   mkdir /var/lib/samba/private
+  mkdir /var/lib/samba/usershares
   rm -rf /tmp/*
   touch /var/lib/samba/.initialized
 fi
