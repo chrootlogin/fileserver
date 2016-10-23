@@ -25,6 +25,7 @@ if [ ! -f /var/lib/samba/.initialized ]; then
   mkdir /var/lib/samba/private
   mkdir /var/lib/samba/usershares
   rm -rf /tmp/*
+  smbpasswd -an nobody
   touch /var/lib/samba/.initialized
 fi
 
