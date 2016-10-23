@@ -11,13 +11,20 @@ RUN gpg --keyserver ha.pool.sks-keyservers.net --recv-keys 595E85A6B1B4779EA4DAA
   && chmod +x /usr/local/bin/tini
 
 VOLUME /var/lib/extrausers
+VOLUME /var/lib/samba
+VOLUME /etc/samba
 
 RUN apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
   libnss-extrausers \
   samba \
+  wget \
   && apt-get clean
 
 RUN sed -i '/^\(passwd\|group\|shadow\):/{ s/$/ extrausers/; }' /etc/nsswitch.conf
 
-ENTRYPOINT ["/usr/local/bin/tini", "--"]
+COPY src /opt/docker-samba
+RUN rm -f /opt/docker-samba/Dockerfile \
+  && chmod +x /opt/docker-samba/run.sh /opt/docker-samba/manage.sh
+
+ENTRYPOINT ["/usr/local/bin/tini", "--", "/opt/docker-samba/run.sh"]
