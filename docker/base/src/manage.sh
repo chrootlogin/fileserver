@@ -47,5 +47,5 @@ case $2 in
     echo "  Remove a user."
     echo
     echo "manage password [USERNAME] [PASSWORD]"
-    echo " Reset a user password."
+    echo "  Reset a user password."
 esac
