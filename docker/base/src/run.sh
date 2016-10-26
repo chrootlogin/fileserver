@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ ! -f /etc/samba/smb.conf ]; then
-  cp /opt/docker-samba/etc/smb.conf /etc/samba/smb.conf
+  cp /opt/rootlogin-fileserver/etc/smb.conf /etc/samba/smb.conf
 fi
 
 if [ ! -f /var/lib/extrausers/passwd ]; then
@@ -18,6 +18,7 @@ fi
 
 if [ ! -f /var/lib/samba/.initialized ]; then
   echo "Initializing /var/lib/samba. Please be patient..."
+  apt-get update
   SAMBA_URI=$(apt-cache show samba  | grep "Filename:" | cut -f 2 -d " ")
   wget "http://ftp.debian.org/debian/${SAMBA_URI}" -O /tmp/samba.deb
   dpkg -x /tmp/samba.deb /tmp/samba
@@ -30,7 +31,7 @@ if [ ! -f /var/lib/samba/.initialized ]; then
 fi
 
 if [ "$1" == "manage" ]; then
-  exec /opt/docker-samba/manage.sh "$@"
+  exec /opt/rootlogin-fileserver/manage.sh "$@"
   exit
 fi
 

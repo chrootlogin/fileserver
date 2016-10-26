@@ -40,7 +40,7 @@ case $2 in
     move_user2extrapasswd "$3"
   ;;
   *)
-    echo "rootLogin/samba-base management utility"
+    echo "rootLogin/fileserver management utility"
     echo "---------------------------------------"
     echo
     echo "Usage:"
