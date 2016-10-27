@@ -7,6 +7,15 @@ ARG BUILD_DEPS="build-essential libevent-dev libssl-dev libgcrypt11-dev libkrb5-
 RUN apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ${BUILD_DEPS} \
     tracker \
+    libevent-2.0 \
+    libavahi-client3 \
+    libevent-core-2.0 \
+    libwrap0 \
+    libtdb1 \
+    libmysqlclient18 \
+    libcrack2 \
+    libdbus-glib-1-2 \
+    libgssapi-krb5-2 \
   && cd /tmp \
   && wget "http://downloads.sourceforge.net/project/netatalk/netatalk/${NETATALK_VERSION}/netatalk-${NETATALK_VERSION}.tar.gz" -O /tmp/netatalk.tgz \
   && tar xvzf /tmp/netatalk.tgz \
@@ -25,21 +34,10 @@ RUN apt-get update \
   && make \
   && make install \
   && DEBIAN_FRONTEND=noninteractive apt-get purge -y ${BUILD_DEPS} \
-  && DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    libevent-2.0 \
-    libavahi-client3 \
-    libevent-core-2.0 \
-    libwrap0 \
-    libtdb1 \
-    libmysqlclient18 \
-    libcrack2 \
-    libdbus-glib-1-2 \
   && apt-get autoremove -y --purge \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* \
   && rm -rf /tmp/* \
-  && rm -rf /usr/share/man \
-  && rm -rf /usr/share/doc \
   && rm -rf /usr/share/icons \
   && rm -rf /usr/share/poppler \
   && rm -rf /usr/share/mime \

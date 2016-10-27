@@ -1,7 +1,7 @@
 FROM debian:jessie
 MAINTAINER Simon Erhardt <me+docker@rootlogin.ch>
 
-ARG TINI_VERSION v0.10.0
+ARG TINI_VERSION="v0.10.0"
 
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/local/bin/tini
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini.asc /usr/local/bin/tini.asc
@@ -15,7 +15,6 @@ VOLUME /var/lib/extrausers
 RUN apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
   libnss-extrausers \
-  samba \
   wget \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
@@ -23,6 +22,6 @@ RUN apt-get update \
 RUN sed -i '/^\(passwd\|group\|shadow\):/{ s/$/ extrausers/; }' /etc/nsswitch.conf
 
 COPY src /opt/rootlogin-fileserver
-RUN chmod +x /opt/rootlogin-fileserver/run.sh /opt/rootlogin-fileserver/manage.sh
+RUN chmod +x /opt/rootlogin-fileserver/*.sh
 
 ENTRYPOINT ["/usr/local/bin/tini", "--", "/opt/rootlogin-fileserver/run.sh"]
