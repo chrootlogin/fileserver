@@ -6,7 +6,7 @@ services:
     image: rootlogin/samba
     tty: true
     volumes:
-      - ./data/config:/etc/samba
+      - ./data/samba_config:/etc/samba
       - ./data/samba_lib:/var/lib/samba
       - ./data/users:/var/lib/extrausers
       - ./data/public:/data/public
@@ -14,3 +14,12 @@ services:
       - "135:135"
       - "139:139"
       - "445:445"
+
+  netatalk:
+    restart: always
+    image: rootlogin/netatalk
+    volumes:
+      - ./data/netatalk_config:/etc/netatalk
+      - ./data/public:/data/public
+    ports:
+      - "548:548"
