@@ -11,4 +11,4 @@ rm -f /var/run/dbus/pid
 dbus-daemon --system
 
 echo "Starting NFS-Ganesha..."
-exec /usr/bin/ganesha.nfsd -F -f /etc/fileserver/ganesha.conf
+exec /usr/bin/ganesha.nfsd -F -L STDOUT -f /etc/fileserver/ganesha.conf
