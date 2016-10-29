@@ -30,6 +30,6 @@ RUN apt-get update \
 COPY run.sh /run.sh
 RUN chmod +x /run.sh
 
-EXPOSE 548
+EXPOSE 2049 38465-38467 662 111/udp 111
 
 CMD ["/run.sh"]
