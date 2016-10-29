@@ -20,6 +20,10 @@ if [ -f /usr/sbin/netatalk ]; then
   /opt/rootlogin-fileserver/prepare_netatalk.sh
 fi
 
+if [ -f /usr/bin/ganesha.nfsd ]; then
+  /opt/rootlogin-fileserver/prepare_ganesha.sh
+fi
+
 if [ "$1" == "manage" ]; then
   exec /opt/rootlogin-fileserver/manage.sh "$@"
 else

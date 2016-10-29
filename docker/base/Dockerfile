@@ -11,6 +11,7 @@ RUN gpg --keyserver ha.pool.sks-keyservers.net --recv-keys 595E85A6B1B4779EA4DAA
   && chmod +x /usr/local/bin/tini
 
 VOLUME /var/lib/extrausers
+VOLUME /etc/fileserver
 
 RUN apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
