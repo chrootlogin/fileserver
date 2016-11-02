@@ -10,7 +10,7 @@ A simple fileserver built on docker.
 
 ## Volumes
 
- * **/etc/samba**: Samba configuration directory
+ * **/etc/fileserver**: Directory containing configuration (smb.conf, afp.conf, etc.)
  * **/var/lib/samba**: Various Samba files (Stores authentication stuff).
  * **/var/lib/extrausers**: passwd, group and shadow files for the newly created users.
 

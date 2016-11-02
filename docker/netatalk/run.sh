@@ -6,4 +6,4 @@ rm -f /var/run/dbus/pid
 dbus-daemon --system
 
 echo "Starting netatalk..."
-exec netatalk -d -F /etc/netatalk/afp.conf
+exec netatalk -d -F /etc/fileserver/afp.conf

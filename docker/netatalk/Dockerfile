@@ -46,8 +46,6 @@ RUN apt-get update \
 COPY run.sh /run.sh
 RUN chmod +x /run.sh
 
-VOLUME /etc/netatalk
-
 EXPOSE 548
 
 ENTRYPOINT ["/usr/local/bin/tini", "-s", "-g", "--", "/opt/rootlogin-fileserver/run.sh"]

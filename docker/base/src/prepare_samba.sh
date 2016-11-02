@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [ ! -f /etc/samba/smb.conf ]; then
-  cp /opt/rootlogin-fileserver/etc/smb.conf /etc/samba/smb.conf
+if [ ! -f /etc/fileserver/smb.conf ]; then
+  cp /opt/rootlogin-fileserver/etc/smb.conf /etc/fileserver/smb.conf
 fi
 
 if [ ! -f /var/lib/samba/.initialized ]; then

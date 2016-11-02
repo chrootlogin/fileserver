@@ -8,10 +8,9 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/*
 
 VOLUME /var/lib/samba
-VOLUME /etc/samba
 
 EXPOSE 135
 EXPOSE 139
 EXPOSE 445
 
-CMD ["/usr/sbin/smbd", "-F", "-S"]
+CMD ["/usr/sbin/smbd", "-s", "/etc/fileserver/smb.conf", "-F", "-S"]

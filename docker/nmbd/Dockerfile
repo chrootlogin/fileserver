@@ -8,9 +8,8 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/*
 
 VOLUME /var/lib/samba
-VOLUME /etc/samba
 
 EXPOSE 137/udp
 EXPOSE 138/udp
 
-CMD ["/usr/sbin/nmbd", "-F", "-S"]
+CMD ["/usr/sbin/nmbd", "-s", "/etc/fileserver/smb.conf", "-F", "-S"]
