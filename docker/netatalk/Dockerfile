@@ -1,4 +1,4 @@
-FROM rootlogin/fileserver-base:develop
+FROM rootlogin/fileserver-base:latest
 MAINTAINER Simon Erhardt <me+docker@rootlogin.ch>
 
 ARG NETATALK_VERSION="3.1.10"
