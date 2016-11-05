@@ -6,7 +6,7 @@ A simple fileserver built on docker.
  * **[rootlogin/fileserver-base](https://hub.docker.com/r/rootlogin/fileserver-base)**: Base image with management scripts. Does not run anything.
  * **[rootlogin/samba](https://hub.docker.com/r/rootlogin/samba)**: Standalone smbd daemon. Provides Samba.
  * **[rootlogin/samba-nmbd](https://hub.docker.com/r/rootlogin/samba-nmbd)**: Standalone nmbd daemon. Only needed if you want NetBIOS Name resolution.
-  * **[rootlogin/netatalk](https://hub.docker.com/r/rootlogin/netatalk)**: Standalone netatalk daemon. Let's you share files with OSX.
+ * **[rootlogin/netatalk](https://hub.docker.com/r/rootlogin/netatalk)**: Standalone netatalk daemon. Let's you share files with OSX.
 
 ## Volumes
 
