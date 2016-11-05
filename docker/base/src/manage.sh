@@ -35,7 +35,7 @@ case $2 in
     echo "Adding user '$3' to group '$4'..."
 
     move_user2passwd "$3"
-    usermod -a -G "$4"
+    usermod -a -G "$4" "$3"
     move_user2extrapasswd "$3"
   ;;
   delete_user)
