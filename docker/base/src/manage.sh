@@ -25,6 +25,12 @@ case $2 in
     echo -e "$4\n$4" | (smbpasswd -a -s "$3")
     move_user2extrapasswd "$3"
   ;;
+  add_group)
+    echo "Creating group '$3'..."
+
+    groupadd "$3"
+    move_user2extrapasswd "$3"
+  ;;
   delete_user)
     echo "Removing user '$3'..."
 
@@ -47,6 +53,9 @@ case $2 in
     echo
     echo "manage add_user [USERNAME] [PASSWORD]"
     echo "  Adds a new user."
+    echo
+    echo "manage add_group [GROUPNAME]"
+    echo "  Adds a new group."
     echo
     echo "manage delete_user [USERNAME]"
     echo "  Remove a user."
