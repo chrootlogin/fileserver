@@ -34,9 +34,9 @@ case $2 in
   add_user_to_group)
     echo "Adding user '$3' to group '$4'..."
 
-    move_user2passwd "$3"
+    move_user2passwd "$4"
     usermod -a -G "$4" "$3"
-    move_user2extrapasswd "$3"
+    move_user2extrapasswd "$4"
   ;;
   delete_user)
     echo "Removing user '$3'..."
