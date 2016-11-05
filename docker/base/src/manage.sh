@@ -31,6 +31,13 @@ case $2 in
     groupadd "$3"
     move_user2extrapasswd "$3"
   ;;
+  add_user_to_group)
+    echo "Adding user '$3' to group '$4'..."
+
+    move_user2passwd "$3"
+    usermod -a -G "$4"
+    move_user2extrapasswd "$3"
+  ;;
   delete_user)
     echo "Removing user '$3'..."
 
@@ -56,6 +63,9 @@ case $2 in
     echo
     echo "manage add_group [GROUPNAME]"
     echo "  Adds a new group."
+    echo
+    echo "manage add_user_to_group [USERNAME] [GROUPNAME]"
+    echo "  Adds a user to a group."
     echo
     echo "manage delete_user [USERNAME]"
     echo "  Remove a user."

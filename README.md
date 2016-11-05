@@ -45,8 +45,16 @@ rootLogin/samba-base management utility
 Usage:
 manage add_user [USERNAME] [PASSWORD]
   Adds a new user.
+
+manage add_group [GROUPNAME]
+  Adds a new group.
+
+manage add_user_to_group [USERNAME] [GROUPNAME]
+  Adds a user to a group.
+
 manage delete_user [USERNAME]
   Remove a user.
+
 manage password [USERNAME] [PASSWORD]
   Reset a user password.
 ```
